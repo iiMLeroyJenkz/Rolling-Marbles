@@ -23,14 +23,22 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(new Vector3(horizontalInput, 0.0f, verticalInput) * speed);
-
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            rb.velocity -= rb.velocity / 1.005f;
+        }
+        else
+        {
+            rb.AddForce(new Vector3(horizontalInput, 0.0f, verticalInput) * speed);
+        }
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
             isGrounded = false;
         }
+        
     }
 
     private void OnCollisionStay(Collision collision)

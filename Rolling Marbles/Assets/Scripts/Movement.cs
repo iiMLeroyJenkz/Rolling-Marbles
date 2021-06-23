@@ -24,9 +24,9 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            rb.velocity -= rb.velocity / 1.005f;
+            rb.velocity -= rb.velocity / 10f;
         }
         else
         {
